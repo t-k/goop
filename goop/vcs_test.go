@@ -1,7 +1,7 @@
 package goop_test
 
 import (
-	"github.com/nitrous-io/goop/goop"
+	"github.com/karmakaze/goop/goop"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -20,7 +20,7 @@ var _ = Describe("vcs", func() {
 		{"github.com/mattn/go-sqlite3", "https://github.com/mattn/go-sqlite3.git", "git", "git", "github.com/mattn/go-sqlite3"},
 		{"github.com/mattn/go-sqlite3", "git+ssh://git@github.com/mattn/go-sqlite3.git", "git", "git", "github.com/mattn/go-sqlite3"},
 		{"github.com/mattn/go-sqlite3", "git@github.com:mattn/go-sqlite3.git", "git", "git", "github.com/mattn/go-sqlite3"},
-		{"github.com/nitrous-io/no-such", "git@github.com/nitrous-io/no-such", "git", "", "github.com/nitrous-io/no-such"},
+		{"github.com/karmakaze/no-such", "git@github.com/karmakaze/no-such", "git", "", "github.com/karmakaze/no-such"},
 		{"bitbucket.org/kardianos/osext", "ssh://hg@bitbucket.org/kardianos/osext", "hg", "hg", "bitbucket.org/kardianos/osext"},
 		{"bitbucket.org/kardianos/osext", "https://bitbucket.org/kardianos/osext", "", "hg", "bitbucket.org/kardianos/osext"},
 		{"bitbucket.org/ymotongpoo/go-bitarray", "git@bitbucket.org:ymotongpoo/go-bitarray.git", "git", "git", "bitbucket.org/ymotongpoo/go-bitarray"},

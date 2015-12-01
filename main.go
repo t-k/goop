@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/nitrous-io/goop/colors"
-	"github.com/nitrous-io/goop/goop"
+	"github.com/karmakaze/goop/colors"
+	"github.com/karmakaze/goop/goop"
 )
 
 func main() {

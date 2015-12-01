@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/nitrous-io/goop/parser"
+	"github.com/karmakaze/goop/parser"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -37,38 +37,38 @@ var _ = Describe("parser", func() {
 			Context("with no revision specified", func() {
 				BeforeEach(func() {
 					deps, err = parser.Parse(bytes.NewBufferString(`
-						github.com/nitrous-io/goop
+						github.com/karmakaze/goop
 					`))
 				})
 
 				It("parses and returns a slice containing one dependency item", func() {
 					Expect(err).To(BeNil())
 					Expect(deps).To(HaveLen(1))
-					Expect(deps[0]).To(Equal(&parser.Dependency{Pkg: "github.com/nitrous-io/goop", Rev: ""}))
+					Expect(deps[0]).To(Equal(&parser.Dependency{Pkg: "github.com/karmakaze/goop", Rev: ""}))
 				})
 			})
 
 			Context("with revision specified", func() {
 				It("parses and returns a slice containing one dependency item", func() {
 					deps, err = parser.Parse(bytes.NewBufferString(`
-						github.com/nitrous-io/goop #09f0feb1b103933bd9985f0a85e01eeaad8d75c8
+						github.com/karmakaze/goop #09f0feb1b103933bd9985f0a85e01eeaad8d75c8
 					`))
 					Expect(err).To(BeNil())
 					Expect(deps).To(HaveLen(1))
 					Expect(deps[0]).To(Equal(&parser.Dependency{
-						Pkg: "github.com/nitrous-io/goop",
+						Pkg: "github.com/karmakaze/goop",
 						Rev: "09f0feb1b103933bd9985f0a85e01eeaad8d75c8",
 					}))
 				})
 
 				It("ignores whitespace", func() {
 					deps, err = parser.Parse(bytes.NewBufferString(`
-						github.com/nitrous-io/goop      #09f0feb1b103933bd9985f0a85e01eeaad8d75c8
+						github.com/karmakaze/goop      #09f0feb1b103933bd9985f0a85e01eeaad8d75c8
 					`))
 					Expect(err).To(BeNil())
 					Expect(deps).To(HaveLen(1))
 					Expect(deps[0]).To(Equal(&parser.Dependency{
-						Pkg: "github.com/nitrous-io/goop",
+						Pkg: "github.com/karmakaze/goop",
 						Rev: "09f0feb1b103933bd9985f0a85e01eeaad8d75c8",
 					}))
 				})
@@ -77,7 +77,7 @@ var _ = Describe("parser", func() {
 			Context("with custom repo url", func() {
 				BeforeEach(func() {
 					deps, err = parser.Parse(bytes.NewBufferString(`
-						github.com/nitrous-io/goop !git@github.com:foo/goop
+						github.com/karmakaze/goop !git@github.com:foo/goop
 					`))
 				})
 
@@ -85,7 +85,7 @@ var _ = Describe("parser", func() {
 					Expect(err).To(BeNil())
 					Expect(deps).To(HaveLen(1))
 					Expect(deps[0]).To(Equal(&parser.Dependency{
-						Pkg: "github.com/nitrous-io/goop",
+						Pkg: "github.com/karmakaze/goop",
 						URL: "git@github.com:foo/goop",
 					}))
 				})
@@ -94,7 +94,7 @@ var _ = Describe("parser", func() {
 			Context("with a comment", func() {
 				BeforeEach(func() {
 					deps, err = parser.Parse(bytes.NewBufferString(`
-						github.com/nitrous-io/goop // hello world
+						github.com/karmakaze/goop // hello world
 					`))
 				})
 			})
@@ -102,7 +102,7 @@ var _ = Describe("parser", func() {
 			Context("with unparseable garbage", func() {
 				BeforeEach(func() {
 					deps, err = parser.Parse(bytes.NewBufferString(`
-						github.com/nitrous-io/goop (*@#&!@(*#)@$F@sdgu8$!
+						github.com/karmakaze/goop (*@#&!@(*#)@$F@sdgu8$!
 					`))
 				})
 
@@ -116,7 +116,7 @@ var _ = Describe("parser", func() {
 		Context("multiple entries", func() {
 			BeforeEach(func() {
 				deps, err = parser.Parse(bytes.NewBufferString(`
-					github.com/nitrous-io/goop #09f0feb1b103933bd9985f0a85e01eeaad8d75c8
+					github.com/karmakaze/goop #09f0feb1b103933bd9985f0a85e01eeaad8d75c8
 
 					github.com/gorilla/mux
 					  github.com/gorilla/context #14f550f51af52180c2eefed15e5fd18d63c0a64a // future versions don't work
@@ -131,7 +131,7 @@ var _ = Describe("parser", func() {
 				Expect(err).To(BeNil())
 				Expect(deps).To(HaveLen(5))
 				Expect(deps[0]).To(Equal(&parser.Dependency{
-					Pkg: "github.com/nitrous-io/goop",
+					Pkg: "github.com/karmakaze/goop",
 					Rev: "09f0feb1b103933bd9985f0a85e01eeaad8d75c8",
 				}))
 				Expect(deps[1]).To(Equal(&parser.Dependency{
