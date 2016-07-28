@@ -49,10 +49,9 @@ func IdentifyVCS(url string) string {
 }
 
 func RepoRootForImportPathWithURLOverride(importPath string, url string) (*vcs.RepoRoot, error) {
-	repo, err := vcs.RepoRootForImportPathStatic(importPath, "ignore")
+	repo, err := vcs.RepoRootForImportPathStatic(url, "ignore")
 	if err != nil {
 		return nil, err
 	}
-	repo.Repo = url
 	return repo, nil
 }
