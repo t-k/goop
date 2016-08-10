@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/karmakaze/go.tools/go/vcs"
+	"golang.org/x/tools/go/vcs"
 
 	"github.com/karmakaze/goop/colors"
 	"github.com/karmakaze/goop/parser"

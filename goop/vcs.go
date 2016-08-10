@@ -4,7 +4,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/karmakaze/go.tools/go/vcs"
+	"golang.org/x/tools/go/vcs"
 )
 
 func GuessVCS(url string) string {
